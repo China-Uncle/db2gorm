@@ -1,6 +1,6 @@
 package main
 
-import "db2gorm/gen"
+import "github.com/China-Uncle/db2gorm/gen"
 
 //demo
 func main() {

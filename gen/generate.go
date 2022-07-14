@@ -6,9 +6,9 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/qmhball/db2gorm/db"
-	"github.com/qmhball/db2gorm/tpl"
-	"github.com/qmhball/db2gorm/util"
+	"github.com/China-Uncle/db2gorm/db"
+	"github.com/China-Uncle/db2gorm/tpl"
+	"github.com/China-Uncle/db2gorm/util"
 	"gorm.io/gorm"
 )
 

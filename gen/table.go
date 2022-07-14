@@ -3,7 +3,7 @@ package gen
 import (
 	"strings"
 
-	"github.com/qmhball/db2gorm/util"
+	"github.com/China-Uncle/db2gorm/util"
 	"gorm.io/gorm"
 )
 
