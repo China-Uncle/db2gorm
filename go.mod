@@ -3,7 +3,6 @@ module github.com/china-uncle/db2gorm
 go 1.18
 
 require (
-	github.com/china-uncle/db2gorm v0.1.1
 	gorm.io/driver/mysql v1.3.5
 	gorm.io/gorm v1.23.8
 )

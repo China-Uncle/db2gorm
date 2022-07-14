@@ -60,12 +60,16 @@ gen.GenConf的说明如下：
 
 ## 2.2 全库生成
 ```
-    gen.GenerateAll(gen.GenConf{
-        Dsn:       dsn,
-        WritePath: "./model",
-        Stdout: false,
-        Overwrite: true,
-    })
+   	dsn := "root:root@tcp(127.0.0.1:3306)/test?charset=utf8&parseTime=true&loc=Local"
+
+	gen.GenerateAll(gen.GenConf{
+		Dsn:         dsn,
+		WritePath:   "mysql", //生成到指定目录
+		Stdout:      false,
+		Overwrite:   true,
+		PackageName: "test", //生成出来的文件package
+		DirName:     "test", //生成的文件夹
+	})
 ```
 
 # 3. 推荐的数据库配置
