@@ -36,7 +36,7 @@ type User struct{
 package main
 
 import (
-    "github.com/China-Uncle/db2gorm/gen"
+    "github.com/china-uncle/db2gorm/gen"
 )
 
 dsn := "root:user237@tcp(10.10.10.237:3306)/mydb?charset=utf8&parseTime=true&loc=Local"

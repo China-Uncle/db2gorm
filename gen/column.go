@@ -2,7 +2,7 @@ package gen
 
 import (
 	"fmt"
-	"github.com/China-Uncle/db2gorm/util"
+	"github.com/china-uncle/db2gorm/util"
 	"gorm.io/gorm"
 	"regexp"
 	"strings"
