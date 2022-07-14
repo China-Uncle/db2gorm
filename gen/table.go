@@ -1,17 +1,19 @@
 package gen
 
 import (
+	"strings"
+
 	"github.com/qmhball/db2gorm/util"
 	"gorm.io/gorm"
-	"strings"
 )
 
 //单个原始表名集合
 type Tables []string
+
 /*获取DB下所有的表名*/
-func (t *Tables)GetTables(orm *gorm.DB) error{
+func (t *Tables) GetTables(orm *gorm.DB) error {
 	res := orm.Raw("show tables").Scan(t)
-	if res.Error != nil{
+	if res.Error != nil {
 		return res.Error
 	}
 
@@ -21,21 +23,30 @@ func (t *Tables)GetTables(orm *gorm.DB) error{
 
 //单个表在生成struct时所需的全部信息
 type TableInfo struct {
-	TableName string	//原始表名
-	StructName string	//驼峰表名
-	PackageName string	//全小写的表名
-	DirName string	//*.go所在的目录，目前和PackageName一致
+	TableName   string //原始表名
+	StructName  string //驼峰表名
+	PackageName string //全小写的表名
+	DirName     string //*.go所在的目录，目前和PackageName一致
 	ColumnsInfo []ColumnInfo
 }
 
-func GetTableInfo(orm *gorm.DB, tblName string)(TableInfo, error){
+func GetTableInfo(orm *gorm.DB, tblName string, conf GenConf) (TableInfo, error) {
 	var i TableInfo
 	i.TableName = tblName
 	i.StructName = util.StrCamel(tblName)
-	i.PackageName = strings.ToLower(i.StructName)
-	i.DirName = i.PackageName
+	if conf.PackageName != "" {
+		i.PackageName = conf.PackageName
+	} else {
+		i.PackageName = strings.ToLower(i.StructName)
+	}
+	if conf.DirName != "" {
+		i.DirName = conf.DirName
+	} else {
+
+		i.DirName = i.PackageName
+	}
 	info, err := GetTableColumnsInfo(orm, tblName)
-	if err != nil{
+	if err != nil {
 		return i, err
 	}
 
